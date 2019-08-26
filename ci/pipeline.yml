@@ -1,0 +1,15 @@
+---
+resources:
+  - name: github-repo
+    type: git
+    source:
+      uri: https://github.com/hbakkerit/ecpcrm
+      branch: master
+
+jobs:
+  - name: job-build
+    public: false
+    plan:
+      - get: github-repo
+      - task: build
+        file: github-repo/ci/build.yml
